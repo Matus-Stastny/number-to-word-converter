@@ -1,10 +1,17 @@
-const express = require("express");
-
+const express = require('express');
 const app = express();
+
+const parser = require('./parser');
 const port = process.env.PORT || 5000;
 
-app.get("/api/hello", (req, res) => {
-  res.send({ express: "Example response from API" });
+const pattern = /[2-9]+/g;
+
+app.get('/api/:numbers', (req, res) => {
+    if (req.errors) {
+        return;
+    }
+    const validNumbers = req.params.numbers.match(pattern).join('');
+    res.send({ words: parser.getWordsFromNumbers(validNumbers) });
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
