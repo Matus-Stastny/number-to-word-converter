@@ -46,7 +46,9 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <input className="number-input" value={inputValue} onChange={this.handleInputChange} />
-                <button onClick={this.handleSubmit}>Call API</button>
+                <button className="submit-button" onClick={this.handleSubmit}>
+                    Submit
+                </button>
                 <div className="words-wrapper">
                     {response.map((word, index) => (
                         <span className={`word ${word.isRealWord ? 'word--is-real' : ''}`} key={index}>

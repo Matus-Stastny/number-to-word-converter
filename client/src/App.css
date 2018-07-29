@@ -50,10 +50,17 @@
   background: gray;
 }
 
-.number-input {
+.number-input,
+.submit-button {
   padding: 5px;
   line-height: 30px;
   font-size: 30px;
+}
+
+.submit-button {
+  border: black solid 1px;
+  border-radius: 5px;
+  margin-left: 6px;
 }
 
 .keyboard {
