@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const dictionary = require('./dictionary');
 
 const data = {
     2: ['a', 'b', 'c'],
@@ -28,11 +29,18 @@ const combine = (left, right, next, buffer) => {
     }
 };
 
+const checkWord = word => {
+    return _.includes(dictionary[word.charAt(0)][word.length.toString()], word);
+};
+
 const getWordsFromNumbers = numbers => {
     const charsArr = numbersToCharactersArr(numbers);
-    return combine(_.head(charsArr), _.head(_.tail(charsArr)), _.tail(_.tail(charsArr)), []).filter(
-        i => i.length === charsArr.length
-    );
+    return combine(_.head(charsArr), _.head(_.tail(charsArr)), _.tail(_.tail(charsArr)), [])
+        .filter(i => i.length === charsArr.length)
+        .map(word => ({
+            text: word,
+            isRealWord: checkWord(word)
+        }));
 };
 
 module.exports.getWordsFromNumbers = getWordsFromNumbers;
