@@ -30,6 +30,32 @@
     transform: rotate(360deg);
   }
 }
+
+.words-wrapper {
+  margin: 0 auto;
+  display: flex;
+  max-width: 640px;
+  flex-wrap: wrap;
+  /* justify-content: space-evenly */
+}
+
+.word {
+  border: darkblue solid 0.5px;
+  border-radius: 5px;
+  margin-left: 3px;
+  padding: 4px 8px;
+}
+
+.word--is-real {
+  background: gray;
+}
+
+.number-input {
+  padding: 5px;
+  line-height: 30px;
+  font-size: 30px;
+}
+
 .keyboard {
   display: flex;
   flex-direction: column;
