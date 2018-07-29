@@ -36,13 +36,28 @@
 }
 
 .keyboard__button {
+  display: inline-block;
+  min-width: 100px;
   padding: 10px 40px;
   font-family: sans-serif;
   text-align: center;
-  font-size: 30px;
   background: white;
   border: black solid 1px;
   border-radius: 5px;
   margin-left: 3px;
   margin-bottom: 3px;
+}
+
+.keyboard__chars-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard__letter {
+  font-size: 30px;
+}
+
+.keyboard__letter {
+  font-size: 15px;
+  color: gray;
 }
