@@ -6,6 +6,12 @@ class App extends Component {
     state = {
         response: ''
     };
+    constructor(props) {
+        super(props);
+        this.state = {
+            inputValue: ''
+        };
+    }
 
     componentDidMount() {
         this.callApi()
@@ -21,6 +27,12 @@ class App extends Component {
 
         return body;
     };
+    handleInputChange = e => {
+        this.setState({ inputValue: e.target.value });
+    };
+    handleKeyboardButtonClick = value => {
+        this.setState({ inputValue: `${this.state.inputValue}${value}` });
+    };
     render() {
         return (
             <div className="App">
@@ -29,6 +41,8 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <p className="App-intro">{this.state.response}</p>
+                <input value={inputValue} onChange={this.handleInputChange} />
+                <Keyboard onButtonPress={this.handleKeyboardButtonClick} />
             </div>
         );
     }
