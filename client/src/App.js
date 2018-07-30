@@ -46,6 +46,9 @@ class App extends Component {
         this.setState({ showedRealWordsOnly: !this.state.showedRealWordsOnly });
     };
 
+    handleDelete = () => {
+        this.setState({ inputValue: this.state.inputValue.slice(0, -1) });
+    };
 
     render() {
         const { inputValue, words, showedRealWordsOnly } = this.state;
@@ -95,6 +98,8 @@ class App extends Component {
                             onChange={this.handleInputChange}
                         />
                         <Keyboard
+                            onSubmit={this.handleSubmit}
+                            onDelete={this.handleDelete}
                             onButtonPress={this.handleKeyboardButtonClick}
                         />
                     </div>

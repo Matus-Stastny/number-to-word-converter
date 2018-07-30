@@ -1,9 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Keyboard = ({ onButtonPress }) => {
+const Keyboard = ({ onButtonPress, onDelete, onSubmit }) => {
     return (
         <div className="keyboard">
+            <div className="keyboard__line">
+                <div className="keyboard__button" onClick={onDelete}>
+                    <div className="keyboard__chars-wrapper">
+                        <span className="keyboard__number">Del</span>
+                    </div>
+                </div>
+                <div className="keyboard__button" onClick={onSubmit}>
+                    <div className="keyboard__chars-wrapper">
+                        <span className="keyboard__number">Submit</span>
+                    </div>
+                </div>
+            </div>
             <div className="keyboard__line">
                 <div className="keyboard__button" onClick={() => onButtonPress('1')}>
                     <div className="keyboard__chars-wrapper">
@@ -77,7 +89,9 @@ const Keyboard = ({ onButtonPress }) => {
 };
 
 Keyboard.propTypes = {
-    onButtonPress: PropTypes.func.isRequired
+    onButtonPress: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired
 };
 
 export default Keyboard;
