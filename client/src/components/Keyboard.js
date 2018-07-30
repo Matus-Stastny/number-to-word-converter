@@ -1,20 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Keyboard = ({ onButtonPress, onDelete, onSubmit }) => {
+const Keyboard = ({ onButtonPress, onDelete, onSubmit, isSubmitButtonDisabled }) => {
     return (
         <div className="keyboard">
             <div className="keyboard__line">
-                <div className="keyboard__button" onClick={onDelete}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">Del</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={onSubmit}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">Submit</span>
-                    </div>
-                </div>
+                <button className="keyboard__button" onClick={onDelete}>
+                    Del
+                </button>
+                <button className="keyboard__button" disabled={isSubmitButtonDisabled} onClick={onSubmit}>
+                    Submit
+                </button>
             </div>
             <div className="keyboard__line">
                 <div className="keyboard__button" onClick={() => onButtonPress('1')}>
@@ -76,7 +72,7 @@ const Keyboard = ({ onButtonPress, onDelete, onSubmit }) => {
                     </div>
                 </div>
             </div>
-            <div className="keyboard__line">
+            <div className="keyboard__line--last">
                 <div className="keyboard__button" onClick={() => onButtonPress('0')}>
                     <div className="keyboard__chars-wrapper">
                         <span className="keyboard__number">0</span>
@@ -91,7 +87,8 @@ const Keyboard = ({ onButtonPress, onDelete, onSubmit }) => {
 Keyboard.propTypes = {
     onButtonPress: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
+    isSubmitButtonDisabled: PropTypes.bool.isRequired
 };
 
 export default Keyboard;

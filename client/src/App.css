@@ -1,13 +1,10 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
 .App-header {
+  text-align: center;
   background-color: #222;
   height: 50px;
   padding: 20px;
@@ -35,6 +32,7 @@
   margin: 0 auto;
   max-width: 640px;
   padding: 30px;
+  text-align: center;
 }
 
 .options-panel {
@@ -52,6 +50,11 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 10px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .word {
@@ -82,10 +85,6 @@
   border-radius: 5px;
 }
 
-.submit-button {
-  margin-left: 6px;
-}
-
 .clear-button {
   padding: 6px;
 }
@@ -93,10 +92,21 @@
 .keyboard {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.keyboard__line {
+  display: flex;
+  width: 100%;
+}
+.keyboard__line--last {
+  width: aupo;
 }
 
 .keyboard__button {
   display: inline-block;
+  flex-grow: 1;
   min-width: 100px;
   padding: 10px 40px;
   font-family: sans-serif;
@@ -129,4 +139,9 @@
 .keyboard__letter {
   font-size: 15px;
   color: gray;
+}
+
+.message__error {
+  font-size: 10px;
+  color: red;
 }

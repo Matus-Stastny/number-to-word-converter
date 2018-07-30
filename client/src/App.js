@@ -12,15 +12,17 @@ class App extends Component {
             words: [],
             inputValue: '',
             showedRealWordsOnly: false,
-            isLoading: false
+            isLoading: false,
+            isSubmitButtonDisabled: false,
+            error: ''
         };
     }
 
     handleSubmit = () => {
-        this.setState({ isLoading: true });
+        this.setState({ isLoading: true, isSubmitButtonDisabled: true });
         this.callApi()
-            .then(res => this.setState({ words: res.words, isLoading: false }))
-            .catch(err => console.log(err));
+            .then(res => this.setState({ words: res.words, isLoading: false, isSubmitButtonDisabled: false }))
+            .catch(err => this.setState({ error: err.message, isLoading: false, isSubmitButtonDisabled: false }));
     };
 
     callApi = async () => {
@@ -33,15 +35,15 @@ class App extends Component {
     };
 
     handleInputChange = e => {
-        this.setState({ inputValue: e.target.value });
+        this.setState({ inputValue: e.target.value, error: '' });
     };
 
     handleKeyboardButtonClick = value => {
-        this.setState({ inputValue: `${this.state.inputValue}${value}` });
+        this.setState({ inputValue: `${this.state.inputValue}${value}`, error: '' });
     };
 
     handleClear = () => {
-        this.setState({ words: [], inputValue: '' });
+        this.setState({ words: [], inputValue: '', error: '' });
     };
 
     handleRealWordsFilter = () => {
@@ -49,11 +51,11 @@ class App extends Component {
     };
 
     handleDelete = () => {
-        this.setState({ inputValue: this.state.inputValue.slice(0, -1) });
+        this.setState({ inputValue: this.state.inputValue.slice(0, -1), error: '' });
     };
 
     render() {
-        const { inputValue, words, showedRealWordsOnly, isLoading } = this.state;
+        const { inputValue, words, showedRealWordsOnly, isLoading, isSubmitButtonDisabled, error } = this.state;
         return (
             <div className="App">
                 <header className="App-header">
@@ -61,7 +63,6 @@ class App extends Component {
                 </header>
 
                 <div className="container">
-                    {isLoading && <img src={logo} className="App-logo" alt="logo" />}
                     {words.length > 0 && (
                         <div className="options-panel">
                             <button className="button clear-button" onClick={this.handleClear}>
@@ -78,7 +79,9 @@ class App extends Component {
                             </label>
                         </div>
                     )}
-                    <div className="wrapper words-wrapper">
+                    {isLoading && <img src={logo} className="App-logo" alt="logo" />}
+                    {error && <span className="message__error">{error}</span>}
+                    <div className="words-wrapper">
                         {words.map((word, index) => (
                             <span
                                 className={cx('word', {
@@ -100,6 +103,7 @@ class App extends Component {
                         />
                         <Keyboard
                             onSubmit={this.handleSubmit}
+                            isSubmitButtonDisabled={isSubmitButtonDisabled}
                             onDelete={this.handleDelete}
                             onButtonPress={this.handleKeyboardButtonClick}
                         />
