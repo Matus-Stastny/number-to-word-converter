@@ -6,6 +6,7 @@
     "scripts": {
         "client": "cd client && yarn start",
         "server": "nodemon server.js",
+        "test": "yarn run jest test/**.test.js",
         "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
     },
     "dependencies": {
@@ -16,7 +17,11 @@
         "concurrently": "^3.5.0",
         "eslint": "^5.2.0",
         "eslint-plugin-react": "^7.10.0",
+        "jest": "^23.4.2",
         "nodemon": "^1.18.3",
         "prettier-standard": "^8.0.1"
+    },
+    "jest": {
+        "testURL": "http://localhost/"
     }
 }
