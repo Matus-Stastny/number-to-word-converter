@@ -7,9 +7,6 @@ const port = process.env.PORT || 5000;
 const pattern = /[2-9]+/g;
 
 app.get('/api/:numbers', (req, res) => {
-    if (req.errors) {
-        return;
-    }
     const validNumbers = req.params.numbers.match(pattern).join('');
     res.send({ words: parser.getWordsFromNumbers(validNumbers) });
 });
