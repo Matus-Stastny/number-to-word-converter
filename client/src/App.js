@@ -11,13 +11,15 @@ class App extends Component {
         this.state = {
             words: [],
             inputValue: '',
-            showedRealWordsOnly: false
+            showedRealWordsOnly: false,
+            isLoading: false
         };
     }
 
     handleSubmit = () => {
+        this.setState({ isLoading: true });
         this.callApi()
-            .then(res => this.setState({ words: res.words }))
+            .then(res => this.setState({ words: res.words, isLoading: false }))
             .catch(err => console.log(err));
     };
 
@@ -51,15 +53,15 @@ class App extends Component {
     };
 
     render() {
-        const { inputValue, words, showedRealWordsOnly } = this.state;
+        const { inputValue, words, showedRealWordsOnly, isLoading } = this.state;
         return (
             <div className="App">
                 <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">Number to word converter</h1>
                 </header>
 
                 <div className="container">
+                    {isLoading && <img src={logo} className="App-logo" alt="logo" />}
                     {words.length > 0 && (
                         <div className="options-panel">
                             <button className="button clear-button" onClick={this.handleClear}>
@@ -92,7 +94,6 @@ class App extends Component {
                     <div className="wrapper">
                         <input
                             type="number"
-                            s
                             className="number-input"
                             value={inputValue}
                             onChange={this.handleInputChange}
