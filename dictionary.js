@@ -999,6 +999,14 @@ const words = [
     'your'
 ];
 
+/* Created data structure for optimizing search
+    grouppedWords = {
+        'a': {                          a -> fist letter of word
+            '2': [ 'an', am', 'as']     2 -> word length
+            ...
+        }
+    }
+*/
 const grouppedWords = words.reduce((acc, word) => {
     const firstLetter = word.charAt(0);
     if (acc[firstLetter]) {
