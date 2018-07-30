@@ -35,6 +35,16 @@
   margin: 0 auto;
   display: flex;
   max-width: 640px;
+.options-panel {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.options-panel__item {
+  margin-left: 8px;
+}
   flex-wrap: wrap;
   /* justify-content: space-evenly */
 }

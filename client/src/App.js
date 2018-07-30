@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import cx from 'classnames';
 
 import logo from './logo.svg';
 import './App.css';
@@ -9,14 +9,15 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            response: [],
-            inputValue: ''
+            words: [],
+            inputValue: '',
+            showedRealWordsOnly: false
         };
     }
 
     handleSubmit = () => {
         this.callApi()
-            .then(res => this.setState({ response: res.words }))
+            .then(res => this.setState({ words: res.words }))
             .catch(err => console.log(err));
     };
 
@@ -37,26 +38,67 @@ class App extends Component {
         this.setState({ inputValue: `${this.state.inputValue}${value}` });
     };
 
+    handleClear = () => {
+        this.setState({ words: [], inputValue: '' });
+    };
+
+    handleRealWordsFilter = () => {
+        this.setState({ showedRealWordsOnly: !this.state.showedRealWordsOnly });
+    };
+
+
     render() {
-        const { inputValue, response } = this.state;
+        const { inputValue, words, showedRealWordsOnly } = this.state;
         return (
             <div className="App">
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">Welcome to React</h1>
+                    <h1 className="App-title">Number to word converter</h1>
                 </header>
-                <input className="number-input" value={inputValue} onChange={this.handleInputChange} />
-                <button className="submit-button" onClick={this.handleSubmit}>
-                    Submit
-                </button>
-                <div className="words-wrapper">
-                    {response.map((word, index) => (
-                        <span className={`word ${word.isRealWord ? 'word--is-real' : ''}`} key={index}>
-                            {word.text}
-                        </span>
-                    ))}
+
+                <div className="container">
+                    {words.length > 0 && (
+                        <div className="options-panel">
+                            <button className="button clear-button" onClick={this.handleClear}>
+                                Clear
+                            </button>
+                            <label className="options-panel__item">
+                                <input
+                                    type="checkbox"
+                                    name="checkbox"
+                                    value={showedRealWordsOnly}
+                                    onChange={this.handleRealWordsFilter}
+                                />
+                                Only real words
+                            </label>
+                        </div>
+                    )}
+                    <div className="wrapper words-wrapper">
+                        {words.map((word, index) => (
+                            <span
+                                className={cx('word', {
+                                    'word--real': word.isRealWord,
+                                    'word--hidden': !word.isRealWord && showedRealWordsOnly
+                                })}
+                                key={index}
+                            >
+                                {word.text}
+                            </span>
+                        ))}
+                    </div>
+                    <div className="wrapper">
+                        <input
+                            type="number"
+                            s
+                            className="number-input"
+                            value={inputValue}
+                            onChange={this.handleInputChange}
+                        />
+                        <Keyboard
+                            onButtonPress={this.handleKeyboardButtonClick}
+                        />
+                    </div>
                 </div>
-                <Keyboard onButtonPress={this.handleKeyboardButtonClick} />
             </div>
         );
     }
