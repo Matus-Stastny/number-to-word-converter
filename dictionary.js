@@ -1,3 +1,5 @@
+// @flow
+
 const words = [
     'able',
     'about',
@@ -1007,7 +1009,7 @@ const words = [
         }
     }
 */
-const grouppedWords = words.reduce((acc, word) => {
+const grouppedWords = words.reduce((acc: {}, word: string): {} => {
     const firstLetter = word.charAt(0);
     if (acc[firstLetter]) {
         if (acc[firstLetter][word.length]) {

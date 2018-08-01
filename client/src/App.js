@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import cx from 'classnames';
 
@@ -5,9 +6,25 @@ import logo from './logo.svg';
 import './App.css';
 import Keyboard from './components/Keyboard';
 
-class App extends Component {
-    constructor(props) {
-        super(props);
+type ResponseWord = {
+    text: string,
+    isRealWord: boolean
+};
+
+type Props = {};
+
+type State = {
+    words: Array<ResponseWord>,
+    inputValue: string,
+    showedRealWordsOnly: boolean,
+    isLoading: boolean,
+    isSubmitButtonDisabled: boolean,
+    error: string
+};
+
+class App extends Component<Props, State> {
+    constructor() {
+        super();
         this.state = {
             words: [],
             inputValue: '',
@@ -21,24 +38,27 @@ class App extends Component {
     handleSubmit = () => {
         this.setState({ isLoading: true, isSubmitButtonDisabled: true });
         this.callApi()
-            .then(res => this.setState({ words: res.words, isLoading: false, isSubmitButtonDisabled: false }))
-            .catch(err => this.setState({ error: err.message, isLoading: false, isSubmitButtonDisabled: false }));
+            .then((res: { words: Array<ResponseWord> }): void =>
+                this.setState({ words: res.words, isLoading: false, isSubmitButtonDisabled: false })
+            )
+            .catch((err: { message: string }): void =>
+                this.setState({ error: err.message, isLoading: false, isSubmitButtonDisabled: false })
+            );
     };
 
-    callApi = async () => {
+    callApi = async (): Promise<{ words: Array<ResponseWord> }> => {
         const response = await fetch(`/api/${this.state.inputValue}`);
         const body = await response.json();
 
         if (response.status !== 200) throw Error(body.message);
-
         return body;
     };
 
-    handleInputChange = e => {
-        this.setState({ inputValue: e.target.value, error: '' });
+    handleInputChange = (event: SyntheticInputEvent<HTMLInputElement>) => {
+        this.setState({ inputValue: event.target.value, error: '' });
     };
 
-    handleKeyboardButtonClick = value => {
+    handleKeyboardButtonClick = (value: string) => {
         this.setState({ inputValue: `${this.state.inputValue}${value}`, error: '' });
     };
 
@@ -54,8 +74,22 @@ class App extends Component {
         this.setState({ inputValue: this.state.inputValue.slice(0, -1), error: '' });
     };
 
-    render() {
-        const { inputValue, words, showedRealWordsOnly, isLoading, isSubmitButtonDisabled, error } = this.state;
+    render(): React$Node {
+        const {
+            inputValue,
+            words,
+            showedRealWordsOnly,
+            isLoading,
+            isSubmitButtonDisabled,
+            error
+        }: {
+            inputValue: string,
+            words: Array<ResponseWord>,
+            showedRealWordsOnly: boolean,
+            isLoading: boolean,
+            isSubmitButtonDisabled: boolean,
+            error: string
+        } = this.state;
         return (
             <div className="App">
                 <header className="App-header">
@@ -82,7 +116,7 @@ class App extends Component {
                     {isLoading && <img src={logo} className="App-logo" alt="logo" />}
                     {error && <span className="message__error">{error}</span>}
                     <div className="words-wrapper">
-                        {words.map((word, index) => (
+                        {words.map((word: ResponseWord, index: number): React$Node => (
                             <span
                                 className={cx('word', {
                                     'word--real': word.isRealWord,

@@ -1,11 +1,12 @@
 {
+    "parser": "babel-eslint",
     "env": {
         "browser": true,
         "es6": true,
         "node": true,
         "jest": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:flowtype/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -13,8 +14,9 @@
         },
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": ["react", "flowtype"],
     "rules": {
+        "no-console": ["error", { "allow": ["warn", "error"] }],
         "indent": [
             2,
             4,
@@ -24,6 +26,28 @@
         ],
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "flowtype/boolean-style": [2, "boolean"],
+        "flowtype/define-flow-type": 1,
+        "flowtype/delimiter-dangle": [2, "never"],
+        "flowtype/generic-spacing": [2, "never"],
+        "flowtype/no-primitive-constructor-types": 2,
+        "flowtype/no-types-missing-file-annotation": 2,
+        "flowtype/no-weak-types": 2,
+        "flowtype/object-type-delimiter": [2, "comma"],
+        "flowtype/require-parameter-type": 2,
+        "flowtype/require-return-type": [
+            2,
+            "always",
+            {
+                "annotateUndefined": "never"
+            }
+        ],
+        "flowtype/require-valid-file-annotation": 2
+    },
+    "settings": {
+        "flowtype": {
+            "onlyFilesWithFlowAnnotation": true
+        }
     }
 }
