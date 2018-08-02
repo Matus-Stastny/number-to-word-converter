@@ -41,9 +41,9 @@ class App extends Component<Props, State> {
             .then((res: { words: Array<ResponseWord> }): void =>
                 this.setState({ words: res.words, isLoading: false, isSubmitButtonDisabled: false })
             )
-            .catch((err: { message: string }): void => {
-                return this.setState({ error: err.message, isLoading: false, isSubmitButtonDisabled: false });
-            });
+            .catch((err: { message: string }): void =>
+                this.setState({ error: err.message, isLoading: false, isSubmitButtonDisabled: false })
+            );
     };
 
     callApi = async (): Promise<{ words: Array<ResponseWord> }> => {

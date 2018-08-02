@@ -1,85 +1,55 @@
-import React from 'react';
+// @flow
+import * as React from 'react';
 import PropTypes from 'prop-types';
 
-const Keyboard = ({ onButtonPress, onDelete, onSubmit, isSubmitButtonDisabled }) => {
+import KeyboardButton from './KeyboardButton';
+import KeyboardGrid from './KeyboardGrid';
+import KeyboardLine from './KeyboardLine';
+
+type Props = {
+    onButtonPress: (value: string) => void,
+    onDelete: () => void,
+    onSubmit: () => void,
+    isSubmitButtonDisabled: boolean
+};
+
+const keyboardData = {
+    '1': '-',
+    '2': 'a b c',
+    '3': 'd e f',
+    '4': 'g h i',
+    '5': 'j k l',
+    '6': 'm n o',
+    '7': 'p q r s',
+    '8': 't u v',
+    '9': 'w x y z'
+};
+
+const Keyboard = (props: Props): React.Node => {
     return (
         <div className="keyboard">
-            <div className="keyboard__line">
-                <button className="keyboard__button" onClick={onDelete}>
-                    Del
-                </button>
-                <button className="keyboard__button" disabled={isSubmitButtonDisabled} onClick={onSubmit}>
-                    Submit
-                </button>
-            </div>
-            <div className="keyboard__line">
-                <div className="keyboard__button" onClick={() => onButtonPress('1')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">1</span>
-                        <span className="keyboard__letters">-</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('2')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">2</span>
-                        <span className="keyboard__letters">a b c</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('3')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">3</span>
-                        <span className="keyboard__letters">d e f</span>
-                    </div>
-                </div>
-            </div>
-            <div className="keyboard__line">
-                <div className="keyboard__button" onClick={() => onButtonPress('4')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">4</span>
-                        <span className="keyboard__letters">g h i</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('5')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">5</span>
-                        <span className="keyboard__letters">j k l</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('6')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">6</span>
-                        <span className="keyboard__letters">m n o</span>
-                    </div>
-                </div>
-            </div>
-            <div className="keyboard__line">
-                <div className="keyboard__button" onClick={() => onButtonPress('7')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">7</span>
-                        <span className="keyboard__letters">p q r s</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('8')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">8</span>
-                        <span className="keyboard__letters">t u v</span>
-                    </div>
-                </div>
-                <div className="keyboard__button" onClick={() => onButtonPress('9')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">9</span>
-                        <span className="keyboard__letters">w x y z</span>
-                    </div>
-                </div>
-            </div>
-            <div className="keyboard__line--last">
-                <div className="keyboard__button" onClick={() => onButtonPress('0')}>
-                    <div className="keyboard__chars-wrapper">
-                        <span className="keyboard__number">0</span>
-                        <span className="keyboard__letters">? ! .</span>
-                    </div>
-                </div>
-            </div>
+            <KeyboardLine>
+                <KeyboardButton characters="Del" onClick={props.onDelete} />
+                <KeyboardButton
+                    characters="Submit"
+                    onClick={props.onSubmit}
+                    isButtonDisabled={props.isSubmitButtonDisabled}
+                />
+            </KeyboardLine>
+            <KeyboardGrid>
+                {Object.keys(keyboardData).map((key: string): React$Node => (
+                    <KeyboardButton
+                        key={key}
+                        number={key}
+                        characters={keyboardData[key]}
+                        onClick={(): void => props.onButtonPress(key)}
+                    />
+                ))}
+            </KeyboardGrid>
+
+            <KeyboardLine isLast>
+                <KeyboardButton number="0" characters="? ! ." onClick={(): void => props.onButtonPress('0')} />
+            </KeyboardLine>
         </div>
     );
 };
