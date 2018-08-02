@@ -10,7 +10,8 @@ const pattern: RegExp = /[2-9]+/g;
 app.get('/api/:numbers', (req: express$Request, res: express$Response) => {
     const validNumbersArr: array<string> = req.params.numbers.match(pattern);
     if (validNumbersArr) {
-        res.send({ words: parser.getWordsFromNumbers(validNumbersArr) });
+        const validNumbers = validNumbersArr.join('');
+        res.send({ words: parser.getWordsFromNumbers(validNumbers) });
     } else {
         res.status(404).send({ message: 'Missing words with current number combination.' });
     }

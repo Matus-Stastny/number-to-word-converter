@@ -18,8 +18,8 @@ const data = {
     '9': ['w', 'x', 'y', 'z']
 };
 
-const numbersToCharactersArr = (numbers: array<string>): Array<Array<string>> => {
-    return numbers.map((item: string): Array<string> => data[item]);
+const numbersToCharactersArr = (numbers: string): Array<Array<string>> => {
+    return numbers.split('').map((item: string): Array<string> => data[item]);
 };
 
 const combine = (
