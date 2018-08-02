@@ -18,8 +18,8 @@ const data = {
     '9': ['w', 'x', 'y', 'z']
 };
 
-const numbersToCharactersArr = (numbers: string): Array<Array<string>> => {
-    return numbers.split('').map((item: string): Array<string> => data[item]);
+const numbersToCharactersArr = (numbers: array<string>): Array<Array<string>> => {
+    return numbers.map((item: string): Array<string> => data[item]);
 };
 
 const combine = (
@@ -44,7 +44,7 @@ const checkWord = (word: string): boolean => {
     return _.includes(dictionary[word.charAt(0)][word.length.toString()], word);
 };
 
-const getWordsFromNumbers = (numbers: string): Array<ParserResult> => {
+const getWordsFromNumbers = (numbers: Array<string>): Array<ParserResult> => {
     const charsArr = numbersToCharactersArr(numbers);
     return combine(_.head(charsArr), _.head(_.tail(charsArr)), _.tail(_.tail(charsArr)), [])
         .filter((word: string): boolean => word.length === charsArr.length)

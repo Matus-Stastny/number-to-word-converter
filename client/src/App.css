@@ -100,9 +100,6 @@
   display: flex;
   width: 100%;
 }
-.keyboard__line--last {
-  width: aupo;
-}
 
 .keyboard__button {
   display: inline-block;
@@ -125,6 +122,9 @@
   -moz-box-shadow: inset 0 0 10px #000000;
   -webkit-box-shadow: inset 0 0 10px #000000;
   box-shadow: inset 0 0 10px #000000;
+}
+.keyboard__button:disabled {
+  background: #f2f2f2;
 }
 
 .keyboard__chars-wrapper {
