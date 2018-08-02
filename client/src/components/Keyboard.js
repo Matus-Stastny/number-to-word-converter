@@ -46,7 +46,6 @@ const Keyboard = (props: Props): React.Node => {
                     />
                 ))}
             </KeyboardGrid>
-
             <KeyboardLine isLast>
                 <KeyboardButton number="0" characters="? ! ." onClick={(): void => props.onButtonPress('0')} />
             </KeyboardLine>

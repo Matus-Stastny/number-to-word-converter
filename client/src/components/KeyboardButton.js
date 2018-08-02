@@ -32,6 +32,10 @@ const KeyboardButtonWrapper = styled.button`
     &:focus {
         outline: none;
     }
+    &:disabled {
+        background: #f2f2f2;
+        cursor: none;
+    }
 `;
 
 const KeyboardCharactersWrapper = styled.span`
