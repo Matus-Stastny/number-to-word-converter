@@ -14,6 +14,9 @@
         },
         "sourceType": "module"
     },
+    "globals": {
+        "cy": true
+    },
     "plugins": ["react", "flowtype"],
     "rules": {
         "no-console": ["error", { "allow": ["warn", "error"] }],

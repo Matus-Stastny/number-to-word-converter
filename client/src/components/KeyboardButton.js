@@ -6,7 +6,8 @@ type Props = {
     characters: string,
     number: ?string,
     onClick: () => void,
-    isButtonDisabled: ?boolean
+    isButtonDisabled: ?boolean,
+    id: ?string
 };
 
 const KeyboardButtonWrapper = styled.button`
@@ -49,7 +50,7 @@ const Characters = styled.span`
 `;
 
 const KeyboardButton = (props: Props): React$Node => (
-    <KeyboardButtonWrapper onClick={props.onClick} disabled={props.isButtonDisabled}>
+    <KeyboardButtonWrapper id={props.id} onClick={props.onClick} disabled={props.isButtonDisabled}>
         <KeyboardCharactersWrapper>
             {props.number ? <Characters isNumber>{props.number}</Characters> : null}
             <Characters>{props.characters}</Characters>
@@ -59,7 +60,8 @@ const KeyboardButton = (props: Props): React$Node => (
 
 KeyboardButton.defaultProps = {
     isButtonDisabled: false,
-    number: undefined
+    number: undefined,
+    id: null
 };
 
 export default KeyboardButton;

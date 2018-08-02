@@ -430,6 +430,7 @@ const words = [
     'kill',
     'kind',
     'king',
+    'kiwi',
     'knew',
     'know',
     'lady',

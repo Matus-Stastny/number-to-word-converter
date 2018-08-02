@@ -29,8 +29,9 @@ const Keyboard = (props: Props): React.Node => {
     return (
         <div className="keyboard">
             <KeyboardLine>
-                <KeyboardButton characters="Del" onClick={props.onDelete} />
+                <KeyboardButton id="delete-button" characters="Del" onClick={props.onDelete} />
                 <KeyboardButton
+                    id="submit-button"
                     characters="Submit"
                     onClick={props.onSubmit}
                     isButtonDisabled={props.isSubmitButtonDisabled}

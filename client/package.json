@@ -22,6 +22,8 @@
         "flow": "flow"
     },
     "devDependencies": {
+        "cypress": "^3.0.3",
+        "eslint-plugin-react": "^7.10.0",
         "react-test-renderer": "^16.4.1"
     }
 }
