@@ -1,10 +1,10 @@
 # Number to word converter
 
-Simple React-Node app for converting numbers to words in style of T9
+💯➡️🔠 Simple React-Node app for converting numbers to words in style of T9
 
 ## Get Started
 
-Preparation
+Preparatio
 
 ```sh
 yarn
