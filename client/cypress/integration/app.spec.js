@@ -31,13 +31,13 @@ describe('App', () => {
         cy.visit(localUrl);
         cy.contains('2').click();
         cy.get('button#submit-button').click();
-        cy.get('span.word').contains('a');
-        cy.get('span.word').contains('c');
+        cy.get('span').contains('a');
+        cy.get('span').contains('c');
 
         cy.contains('8').click();
         cy.get('button#submit-button').click();
-        cy.get('span.word').contains('at');
-        cy.get('span.word').contains('cv');
+        cy.get('span').contains('at');
+        cy.get('span').contains('cv');
     });
 
     it('checks if clear button is working properly', function() {
@@ -49,9 +49,9 @@ describe('App', () => {
             .get('button#submit-button')
             .click()
             .then(() => {
-                cy.get('span.word').contains('job');
-                cy.get('button.clear-button').click();
-                cy.get('span.word').should('not.exist');
+                const words = cy.get('span').contains('job');
+                cy.get('button#clear-button').click();
+                words.should('not.exist');
             });
     });
 
@@ -66,7 +66,7 @@ describe('App', () => {
             .click()
             .then(() => {
                 cy.get('input[type="checkbox"]').click();
-                cy.get('span.word').contains('kiwi');
+                cy.get('span').contains('kiwi');
             });
     });
 });
