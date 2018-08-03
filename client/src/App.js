@@ -1,10 +1,12 @@
 // @flow
 import React, { Component } from 'react';
-import cx from 'classnames';
+// import cx from 'classnames';
 
 import logo from './logo.svg';
 import './App.css';
 import Keyboard from './components/Keyboard';
+import Button from './components/Button';
+import Word from './components/Word';
 
 type ResponseWord = {
     text: string,
@@ -99,9 +101,9 @@ class App extends Component<Props, State> {
                 <div className="container">
                     {words.length > 0 && (
                         <div className="options-panel">
-                            <button className="button clear-button" onClick={this.handleClear}>
+                            <Button id="clear-button" onClick={this.handleClear}>
                                 Clear
-                            </button>
+                            </Button>
                             <label className="options-panel__item">
                                 <input
                                     type="checkbox"
@@ -117,15 +119,13 @@ class App extends Component<Props, State> {
                     {error && <span className="message__error">{error}</span>}
                     <div className="words-wrapper">
                         {words.map((word: ResponseWord, index: number): React$Node => (
-                            <span
-                                className={cx('word', {
-                                    'word--real': word.isRealWord,
-                                    'word--hidden': !word.isRealWord && showedRealWordsOnly
-                                })}
+                            <Word
                                 key={index}
+                                isReal={word.isRealWord}
+                                isHidden={!word.isRealWord && showedRealWordsOnly}
                             >
                                 {word.text}
-                            </span>
+                            </Word>
                         ))}
                     </div>
                     <div className="wrapper">

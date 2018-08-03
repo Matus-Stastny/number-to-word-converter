@@ -57,32 +57,11 @@
   flex-direction: column;
 }
 
-.word {
-  border: darkblue solid 0.5px;
-  border-radius: 5px;
-  margin-left: 3px;
-  margin-bottom: 3px;
-  padding: 4px 8px;
-}
-
-.word--real {
-  background: #ccc;
-}
-
-.word--hidden {
-  display: none;
-}
-
 .number-input,
 .submit-button {
   padding: 5px;
   line-height: 30px;
   font-size: 30px;
-}
-
-.button {
-  border: black solid 1px;
-  border-radius: 5px;
 }
 
 .clear-button {
