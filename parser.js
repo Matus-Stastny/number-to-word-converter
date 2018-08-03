@@ -18,7 +18,7 @@ const data = {
     '9': ['w', 'x', 'y', 'z']
 };
 
-const numbersToCharactersArr = (numbers: string): Array<Array<string>> => {
+const getNumbersToCharactersArr = (numbers: string): Array<Array<string>> => {
     return numbers.split('').map((item: string): Array<string> => data[item]);
 };
 
@@ -48,7 +48,7 @@ const checkWord = (word: string): boolean => {
 };
 
 const getWordsFromNumbers = (numbers: Array<string>): Array<ParserResult> => {
-    const charsArr = numbersToCharactersArr(numbers);
+    const charsArr = getNumbersToCharactersArr(numbers);
     return combine(_.head(charsArr), _.head(_.tail(charsArr)), _.tail(_.tail(charsArr)), [])
         .filter((word: string): boolean => word.length === charsArr.length)
         .map((word: string): ParserResult => ({
@@ -57,4 +57,9 @@ const getWordsFromNumbers = (numbers: Array<string>): Array<ParserResult> => {
         }));
 };
 
-module.exports.getWordsFromNumbers = getWordsFromNumbers;
+module.exports = {
+    getWordsFromNumbers,
+    keyboardData: data,
+    getNumbersToCharactersArr,
+    checkWord
+};
