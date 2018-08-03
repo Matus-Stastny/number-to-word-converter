@@ -40,15 +40,33 @@ describe('App', () => {
         cy.get('span.word').contains('cv');
     });
 
+    it('checks if clear button is working properly', function() {
+        cy.visit(localUrl);
+        cy.contains('5').click();
+        cy.contains('6').click();
+        cy.contains('2').click();
+        cy
+            .get('button#submit-button')
+            .click()
+            .then(() => {
+                cy.get('span.word').contains('job');
+                cy.get('button.clear-button').click();
+                cy.get('span.word').should('not.exist');
+            });
+    });
+
     it('checks if real words filter is working properly', function() {
         cy.visit(localUrl);
         cy.contains('5').click();
         cy.contains('4').click();
         cy.contains('9').click();
         cy.contains('4').click();
-        cy.get('button#submit-button').click();
-        cy.wait(1000);
-        cy.get('input[type="checkbox"]').click();
-        cy.get('span.word').contains('kiwi');
+        cy
+            .get('button#submit-button')
+            .click()
+            .then(() => {
+                cy.get('input[type="checkbox"]').click();
+                cy.get('span.word').contains('kiwi');
+            });
     });
 });
