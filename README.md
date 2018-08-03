@@ -24,6 +24,7 @@ client
 ```sh
 cd client
 yarn test
+yarn test-cy
 ```
 
 server
