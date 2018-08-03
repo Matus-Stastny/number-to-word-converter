@@ -41,6 +41,9 @@ const combine = (
 };
 
 const checkWord = (word: string): boolean => {
+    if (!dictionary[word.charAt(0)]) {
+        return false;
+    }
     return _.includes(dictionary[word.charAt(0)][word.length.toString()], word);
 };
 
