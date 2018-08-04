@@ -4,7 +4,7 @@
 
 ## Get Started
 
-Preparatio
+Preparation
 
 ```sh
 yarn
