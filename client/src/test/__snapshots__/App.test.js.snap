@@ -33,227 +33,258 @@ exports[`App component renders corectly 1`] = `
         className="keyboard"
       >
         <div
-          className="keyboard__line"
+          className="sc-ifAKCX ddGpXl"
         >
           <button
-            className="keyboard__button"
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id="delete-button"
             onClick={[Function]}
           >
-            Del
+            <span
+              className="sc-bwzfXH bRskXu"
+            >
+              <span
+                className="sc-htpNat dTzEks"
+              >
+                Del
+              </span>
+            </span>
           </button>
           <button
-            className="keyboard__button"
-            disabled={false}
+            className="sc-bdVaJa kJPfjo"
+            disabled={true}
+            id="submit-button"
             onClick={[Function]}
           >
-            Submit
+            <span
+              className="sc-bwzfXH bRskXu"
+            >
+              <span
+                className="sc-htpNat dTzEks"
+              >
+                Submit
+              </span>
+            </span>
           </button>
         </div>
         <div
-          className="keyboard__line"
+          className="sc-bxivhb idnipy"
         >
-          <div
-            className="keyboard__button"
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 1
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 -
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 2
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 a b c
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 3
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 d e f
               </span>
-            </div>
-          </div>
-        </div>
-        <div
-          className="keyboard__line"
-        >
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 4
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 g h i
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 5
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 j k l
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 6
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 m n o
               </span>
-            </div>
-          </div>
-        </div>
-        <div
-          className="keyboard__line"
-        >
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 7
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 p q r s
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 8
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 t u v
               </span>
-            </div>
-          </div>
-          <div
-            className="keyboard__button"
+            </span>
+          </button>
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 9
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 w x y z
               </span>
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
         <div
-          className="keyboard__line--last"
+          className="sc-ifAKCX hOWDZm"
         >
-          <div
-            className="keyboard__button"
+          <button
+            className="sc-bdVaJa kJPfjo"
+            disabled={false}
+            id={null}
             onClick={[Function]}
           >
-            <div
-              className="keyboard__chars-wrapper"
+            <span
+              className="sc-bwzfXH bRskXu"
             >
               <span
-                className="keyboard__number"
+                className="sc-htpNat hQGCOZ"
               >
                 0
               </span>
               <span
-                className="keyboard__letters"
+                className="sc-htpNat dTzEks"
               >
                 ? ! .
               </span>
-            </div>
-          </div>
+            </span>
+          </button>
         </div>
       </div>
     </div>
